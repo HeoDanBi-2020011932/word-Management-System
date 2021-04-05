@@ -4,59 +4,35 @@ public class MenuManager {
 	public static void main(String[] args) {
 		int num=0;
 		Scanner input = new Scanner(System.in);
+		WordManager wordManager = new WordManager(input);
 		
-		while(num !=6) {
+		while(num !=5) {
 			System.out.println("бщ My Word Manager Menu бщ");
 			System.out.println("1. Add words ");
 			System.out.println("2. Delete words ");
 			System.out.println("3. Edit words ");
 			System.out.println("4. View words ");
-			System.out.println("5. Show the menu ");
-			System.out.println("6. Exit ");
-			System.out.println("Select one number between 1-6");
+			System.out.println("5. Exit ");
+			System.out.println("Select one number between 1-5");
 			
 			num=input.nextInt();
 			
 			switch(num) {
 			case 1:
-				Addwords();
+				wordManager.Addwords();
 				break;
 			case 2:
-				Deletewords();
+				wordManager.Deletewords();
 				break;
 			case 3:
-				Editwords();
+				wordManager.Editwords();
 				break;
 			case 4:
-				Viewwords();
+				wordManager.Viewwords();
 				break;
 			}
 		}
 	}
-	public static void Addwords() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("memory word: ");
-		String word = input.next();
-		System.out.print("word class: ");
-		String wordclass = input.next();
-		System.out.print("meaning: ");
-		String mean = input.next();
-		}
-	
-	public static void Deletewords() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("memory word: ");
-		String word = input.next();
-	}
-	public static void Editwords() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("memory word: ");
-		String word = input.next();
-	}
-	public static void Viewwords() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("memory word: ");
-		String word = input.next();
-	}
+
 }
 
