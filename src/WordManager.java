@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import word.Japanese;
+import word.Word;
+
 public class WordManager {
 	ArrayList<Word> words = new ArrayList<Word>();
 	Scanner input;
@@ -9,15 +12,30 @@ public class WordManager {
 	}
 	
 	public void Addword() {
-		Word word = new Word(); //새 객체 생성
-		System.out.print("word in memory: ");
-		word.memorzied_word = input.next();
-		System.out.print("word class: ");
-		word.wordclass = input.next();
-		System.out.print("meaning: ");
-		word.mean = input.next();
-		words.add(word); //항목 추가
+		int kind=0;
+		Word word;
+		while(kind!=1 && kind!=2) {
+		System.out.println("1.English");
+		System.out.println("2.Japanese");
+		System.out.println("Select num for language kind");
+		kind =input.nextInt();
+		if (kind==1) {
+			word = new Word(); 		//새 객체 생성
+			word.getWordInput(input);
+			words.add(word); 		//항목 추가
+			break;
 		}
+		else if(kind==2){
+			word = new Japanese();		//새 객체 생성
+			word.getWordInput(input);
+			words.add(word); 		//항목 추가
+			break;
+		}
+		else {
+			System.out.println("Select num for language kind");
+			}
+		}
+	}	
 	
 	public void Deleteword() {
 		System.out.print("memory word: ");
@@ -25,7 +43,7 @@ public class WordManager {
 		
 		int index = -1; // -1이다, 배열에서 인덱스를 찾지 못한 것
 		for(int i=0;i<words.size();i++) {
-			if (words.get(i).memorzied_word.equals(word1)) {
+			if (words.get(i).getMemorzied_word().equals(word1)) {
 				index = i;
 				break;
 			}
@@ -46,7 +64,7 @@ public class WordManager {
 		String word1 = input.next();
 		for(int i=0;i<words.size();i++) {
 			Word word =words.get(i);
-			if (words.get(i).memorzied_word.equals(word1)) {
+			if (words.get(i).getMemorzied_word().equals(word1)) {
 				int num=-1;
 				while(num !=4) {
 					System.out.println("☆ My Word Manager Menu ☆");
@@ -60,15 +78,18 @@ public class WordManager {
 					switch(num) {
 					case 1:
 						System.out.println("word in menory: "); 
-						word.memorzied_word=input.next();
+						String memorzied_word=input.next();
+						word.setMemorzied_word(memorzied_word);
 						break;
 					case 2:
 						System.out.println("word class: ");
-						word.wordclass=input.next();
+						String wordclass=input.next();
+						word.setWordclass(wordclass);
 						break;
 					case 3:
 						System.out.println("meaning of word: ");
-						word.mean=input.next();
+						String mean=input.next();
+						word.setMean(mean);
 						break;
 					}//switch
 				}//while
@@ -78,6 +99,7 @@ public class WordManager {
 	public void Viewwords() {
 //		System.out.print("memory word: ");
 //		String word1 = input.next();
+		System.out.println("of registered words: "+words.size());
 		for(int i=0;i<words.size();i++) {
 			words.get(i).printInfo(); //각각의 인덱스를 가지고 온다
 		}				
