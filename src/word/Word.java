@@ -54,6 +54,14 @@ public class Word {
 		System.out.println("memorzied_word: "+memorzied_word+" wordclass: "+wordclass+" mean: "+mean);
 	}
 	
+	String answer;
+	public String getAnswer(){
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	
 	public void getWordInput(Scanner input) {
 		System.out.print("word in memory: ");
 		String memorzied_word = input.next();
