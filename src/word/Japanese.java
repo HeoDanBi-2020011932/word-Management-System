@@ -29,4 +29,8 @@ public class Japanese extends Word {
 		String mean = input.next();
 		this.setMean(mean);
 	}
+	public void printInfo() {
+		System.out.println("memorzied_word: "+memorzied_word+" wordclass: "+wordclass+" mean: "+mean+ "pronunciation: "+answer);
+	}
+	
 }
