@@ -7,6 +7,7 @@ import word.Word;
 public class WordManager {
 	ArrayList<Word> words = new ArrayList<Word>();
 	Scanner input;
+	Japanese jp = new Japanese(); 
 	WordManager(Scanner input){
 		this.input=input;
 	}
@@ -36,7 +37,6 @@ public class WordManager {
 			}
 		}
 	}	
-	
 	public void Deleteword() {
 		System.out.print("memory word: ");
 		String word1 = input.next();
@@ -48,7 +48,6 @@ public class WordManager {
 				break;
 			}
 		}
-		
 		if(index>=0) {
 			words.remove(index);
 			System.out.println("the word "+word1+" is deleted");
@@ -66,13 +65,14 @@ public class WordManager {
 			Word word =words.get(i);
 			if (words.get(i).getMemorzied_word().equals(word1)) {
 				int num=-1;
-				while(num !=4) {
+				while(num !=5) {
 					System.out.println("¡Ù My Word Manager Menu ¡Ù");
 					System.out.println("1. Edit word ");
 					System.out.println("2. Edit word class");
 					System.out.println("3. Edit meaning ");
-					System.out.println("4. Exit ");
-					System.out.println("Select one number between 1-4");
+					System.out.println("4. Edit pronunciation ");
+					System.out.println("5. Exit ");
+					System.out.println("Select one number between 1-5");
 			
 					num=input.nextInt();
 					switch(num) {
@@ -91,11 +91,17 @@ public class WordManager {
 						String mean=input.next();
 						word.setMean(mean);
 						break;
+					case 4:
+						System.out.println("pronunciation: ");
+						String pronun=input.next();
+						word.setAnswer(pronun);
+						}
+						break;
 					}//switch
 				}//while
 			}//if
 		}
-	}
+	
 	public void Viewwords() {
 //		System.out.print("memory word: ");
 //		String word1 = input.next();
