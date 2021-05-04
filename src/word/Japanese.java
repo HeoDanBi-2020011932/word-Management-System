@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Japanese extends Word {
 	
+	public Japanese(Wordkind kind) {
+		super(kind);
+	}
+	
 	String answer;
 	public String getAnswer(){
 		return answer;
@@ -30,7 +34,23 @@ public class Japanese extends Word {
 		this.setMean(mean);
 	}
 	public void printInfo() {
-		System.out.println("memorzied_word: "+memorzied_word+" wordclass: "+wordclass+" mean: "+mean+ "pronunciation: "+answer);
+		String skind="none";
+		switch(this.kind) {
+		case English:
+			skind="eng";
+			break;
+		case Japanese:
+			skind="jp";
+			break;
+		case Korean:
+			skind="ch";
+			break;
+		case Chinese:
+			skind="fre";
+			break;
+		default:
+			}
+		System.out.println("kind:"+skind+" memorzied_word: "+memorzied_word+" wordclass: "+wordclass+" mean: "+mean+ "pronunciation: "+answer);
 	}
 	
 }

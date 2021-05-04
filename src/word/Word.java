@@ -11,8 +11,17 @@ public class Word {
 	public Word() {
 		
 	}
+	public Word(Wordkind kind) {
+		this.kind=kind;
+	}
 	
 	public Word(String memorzied_word, String wordclass, String mean) {
+		this.memorzied_word=memorzied_word;
+		this.wordclass=wordclass;
+		this.mean=mean;
+	}
+	public Word(Wordkind kind,String memorzied_word, String wordclass, String mean) {
+		this.kind=kind;
 		this.memorzied_word=memorzied_word;
 		this.wordclass=wordclass;
 		this.mean=mean;
@@ -51,17 +60,26 @@ public class Word {
 	}
 	
 	public void printInfo() {
-		System.out.println("memorzied_word: "+memorzied_word+" wordclass: "+wordclass+" mean: "+mean);
+		String skind="none";
+		switch(this.kind) {
+		case English:
+			skind="eng";
+			break;
+		case Japanese:
+			skind="jp";
+			break;
+		case Korean:
+			skind="kr";
+			break;
+		case Chinese:
+			skind="ch";
+			break;
+		default:
+			
+		}
+		System.out.println("kind:"+skind+" memorzied_word: "+memorzied_word+" wordclass: "+wordclass+" mean: "+mean);
 	}
-	
-	String answer;
-	public String getAnswer(){
-		return answer;
-	}
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
-	
+
 	public void getWordInput(Scanner input) {
 		System.out.print("word in memory: ");
 		String memorzied_word = input.next();

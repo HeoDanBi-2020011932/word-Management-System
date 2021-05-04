@@ -2,12 +2,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import word.Japanese;
+import word.Korean;
 import word.Word;
+import word.Wordkind;
 
 public class WordManager {
 	ArrayList<Word> words = new ArrayList<Word>();
 	Scanner input;
-	Japanese jp = new Japanese(); 
 	WordManager(Scanner input){
 		this.input=input;
 	}
@@ -18,16 +19,23 @@ public class WordManager {
 		while(kind!=1 && kind!=2) {
 		System.out.println("1.English");
 		System.out.println("2.Japanese");
-		System.out.println("Select num for language kind");
+		System.out.println("3. Korean");
+		System.out.println("Select num 1,2 or 3 for language kind: ");
 		kind =input.nextInt();
 		if (kind==1) {
-			word = new Word(); 		//货 按眉 积己
+			word = new Word(Wordkind.English); 		//货 按眉 积己
 			word.getWordInput(input);
 			words.add(word); 		//亲格 眠啊
 			break;
 		}
 		else if(kind==2){
-			word = new Japanese();		//货 按眉 积己
+			word = new Japanese(Wordkind.Japanese);		//货 按眉 积己
+			word.getWordInput(input);
+			words.add(word); 		//亲格 眠啊
+			break;
+		}
+		else if(kind==3){
+			word=new Korean(Wordkind.Korean);	//货 按眉 积己
 			word.getWordInput(input);
 			words.add(word); 		//亲格 眠啊
 			break;
@@ -94,7 +102,7 @@ public class WordManager {
 					case 4:
 						System.out.println("pronunciation: ");
 						String pronun=input.next();
-						word.setAnswer(pronun);
+						((Japanese) word).setAnswer(pronun);
 						}
 						break;
 					}//switch
