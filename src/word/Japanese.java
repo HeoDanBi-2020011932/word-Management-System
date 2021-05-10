@@ -2,7 +2,7 @@ package word;
 
 import java.util.Scanner;
 
-public class Japanese extends Word {
+public class Japanese extends Word implements WordInput{
 	
 	public Japanese(Wordkind kind) {
 		super(kind);

@@ -2,7 +2,7 @@ package word;
 
 import java.util.Scanner;
 
-public class Korean extends Word {
+public class Korean extends Word implements WordInput{
 	String meaning;
 
 	public Korean(Wordkind kind) {
