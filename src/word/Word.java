@@ -2,7 +2,9 @@ package word;
 
 import java.util.Scanner;
 
-public abstract class Word {
+import exception.WordFormatException;
+
+public abstract class Word implements WordInput{
 	protected Wordkind kind=Wordkind.English;
 	protected String memorzied_word;
 	protected String wordclass;
@@ -39,7 +41,9 @@ public abstract class Word {
 		return memorzied_word;
 	}
 
-	public void setMemorzied_word(String memorzied_word) {
+	public void setMemorzied_word(String memorzied_word) throws WordFormatException {
+		if((memorzied_word.matches("^[a-zA-Z]*$")))
+			throw new WordFormatException();
 		this.memorzied_word = memorzied_word;
 	}
 
@@ -61,5 +65,46 @@ public abstract class Word {
 	
 	public abstract void printInfo();
 	
+	public void setWord(Scanner input) {
+		String memorzied_word="";
+		while(memorzied_word.matches("^[a-zA-Z]*$")){
+			System.out.println("word in memory: "); 
+			memorzied_word=input.next();
+			try {
+				this.setMemorzied_word(memorzied_word);
+			} catch (WordFormatException e) {
+				System.out.println("Please put "+kind+" not English");
+			}
+		}
+	}
+	public void setWordClass(Scanner input) {
+		System.out.println("word class: ");
+		String wordclass=input.next();
+		this.setWordclass(wordclass);
+	}
+	public void setWordMean(Scanner input) {
+		System.out.println("meaning of word: ");
+		String mean=input.nextLine();
+		this.setMean(mean);
+	}
+	public String getkindString() {
+		String skind="none";
+		switch(this.kind) {
+		case English:
+			skind="eng";
+			break;
+		case Japanese:
+			skind="jp";
+			break;
+		case Korean:
+			skind="kr";
+			break;
+		case Chinese:
+			skind="ch";
+			break;
+		default:
+		}
+		return skind;
+	}
 
 }
