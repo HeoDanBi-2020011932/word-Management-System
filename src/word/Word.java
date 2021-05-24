@@ -81,6 +81,7 @@ public abstract class Word implements WordInput{
 		System.out.println("word class: ");
 		String wordclass=input.next();
 		this.setWordclass(wordclass);
+		input.nextLine();
 	}
 	public void setWordMean(Scanner input) {
 		System.out.println("meaning of word: ");
