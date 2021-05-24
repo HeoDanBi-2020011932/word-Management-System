@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -5,13 +6,17 @@ import java.util.Scanner;
 import word.English;
 import word.Japanese;
 import word.Korean;
-import word.Word;
 import word.WordInput;
 import word.Wordkind;
 
-public class WordManager {
+public class WordManager implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7081468940346516144L;
+	
 	ArrayList<WordInput> words = new ArrayList<WordInput>(); //WordInput으로 변경
-	Scanner input;
+	transient Scanner input;
 	WordManager(Scanner input){
 		this.input=input;
 	}
