@@ -9,10 +9,7 @@ public abstract class Word implements WordInput{
 	protected String memorzied_word;
 	protected String wordclass;
 	protected String mean;
-	
-	public Word() {
-		
-	}
+
 	public Word(Wordkind kind) {
 		this.kind=kind;
 	}
@@ -22,6 +19,7 @@ public abstract class Word implements WordInput{
 		this.wordclass=wordclass;
 		this.mean=mean;
 	}
+	
 	public Word(Wordkind kind,String memorzied_word, String wordclass, String mean) {
 		this.kind=kind;
 		this.memorzied_word=memorzied_word;
@@ -62,8 +60,9 @@ public abstract class Word implements WordInput{
 	public void setMean(String mean) {
 		this.mean = mean;
 	}
-	
 	public abstract void printInfo();
+	
+	
 	
 	public void setWord(Scanner input) {
 		String memorzied_word="";

@@ -19,9 +19,10 @@ public class ButtonaddListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		JButton b = (JButton)e.getSource();
-		WordAdder adder = frame.getWordadder(); //JFrame을 상속받은 뷰어가 온다
-		frame.setupPanel(adder); 
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(frame.getWordadder());
+		frame.revalidate();
+		frame.repaint();
 	}
 
 }
