@@ -1,16 +1,23 @@
 package gui;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import Manager.WordManager;
+import listner.WordAdderCancelListener;
+import listner.WordAdderListener;
+
 public class WordAdder extends JPanel {
 	WindowFrame frame;
+		WordManager wordManager;
  
-	public WordAdder(WindowFrame frame) {
+	public WordAdder(WindowFrame frame,WordManager wordManager) {
 		this.frame=frame;
+		this.wordManager=wordManager;
 		
 		JPanel panel= new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -36,10 +43,22 @@ public class WordAdder extends JPanel {
 		JLabel labelpronun= new JLabel("Pronunciation: ",JLabel.TRAILING);
 		JTextField fieldpronun = new JTextField(10);
 		labelpronun.setLabelFor(fieldpronun);
+		
+		JButton saveButton = new JButton("save");
+		saveButton.addActionListener(new WordAdderListener(fieldword,fieldmean,fieldclass,fieldpronun,wordManager));
+		JButton cancelButton = new JButton("cancel");
+		cancelButton.addActionListener(new WordAdderCancelListener(frame)); //단어 정보를 모두 wordAdderListener가 들고 있어야함
+
+
 		panel.add(labelpronun);
 		panel.add(fieldpronun);
 		
-		SpringUtilities.makeCompactGrid(panel,4,2,6,6,6,6);
+
+		panel.add(saveButton);
+		panel.add(cancelButton);
+
+		
+		SpringUtilities.makeCompactGrid(panel,5,2,6,6,6,6);
 		
 		this.add(panel);
 		this.setVisible(true);
