@@ -20,25 +20,40 @@ public class WordViewer extends JPanel{
 
 	public void setWordManager(WordManager wordManager) {
 		this.wordManager = wordManager;
-//		this.removeAll();
-//		DefaultTableModel model = new DefaultTableModel();
-//		model.addColumn("Word");
-//		model.addColumn("Class");
-//		model.addColumn("Mean");
-//		model.addColumn("Pronunciation");
-//		
-//		for(int i =0;i<wordManager.size();i++) {
-//			Vector row = new Vector();
-//			WordInput w =wordManager.get(i);
-//			row.add(w.getMemorzied_word());
-//			row.add(w.getWordclass());
-//			row.add(w.getMean());
-//			model.addRow(row);
-//		}
-//		
-//		JTable table =new JTable(model);
-//		JScrollPane sp = new JScrollPane(table);
-//		this.add(sp);
+		this.removeAll();
+		
+		if(wordManager==null) {
+			DefaultTableModel model = new DefaultTableModel();
+			model.addColumn("Word");
+			model.addColumn("Class");
+			model.addColumn("Mean");
+			model.addColumn("Pronunciation");
+			
+			JTable table =new JTable(model);
+			JScrollPane sp = new JScrollPane(table);
+			this.add(sp);
+			return ; 
+		}
+		
+		DefaultTableModel model = new DefaultTableModel();
+		model.addColumn("Word");
+		model.addColumn("Class");
+		model.addColumn("Mean");
+		model.addColumn("Pronunciation");
+		
+		Vector<String> row = new Vector<String>();
+		for(int i =0;i<wordManager.size();i++) {
+			WordInput w =wordManager.get(i);
+			row.add(w.getMemorzied_word());
+			row.add(w.getWordclass());
+			row.add(w.getMean());
+			row.add(w.getWordPronunce());
+			model.addRow(row);
+		}
+		JTable table =new JTable(model);
+		JScrollPane sp = new JScrollPane(table);
+		this.add(sp);
+		
 	}
 
 	public WordViewer(WindowFrame frame,WordManager wordManager) {
@@ -53,16 +68,20 @@ public class WordViewer extends JPanel{
 		model.addColumn("Mean");
 		model.addColumn("Pronunciation");
 		
+		Vector row = new Vector();
 		for(int i =0;i<wordManager.size();i++) {
-			Vector row = new Vector();
 			WordInput w =wordManager.get(i);
 			row.add(w.getMemorzied_word());
 			row.add(w.getWordclass());
 			row.add(w.getMean());
+			row.add(w.getWordPronunce());
 			model.addRow(row);
+			
+			JTable table =new JTable(model);
+			JScrollPane sp = new JScrollPane(table);
+			this.add(sp);
 		}
-		JTable table =new JTable(model);
-		JScrollPane sp = new JScrollPane(table);
-		this.add(sp);
+		
+		
 	}
 }

@@ -21,5 +21,7 @@ public interface WordInput {
 	public void setWord(Scanner input);
 	public void setWordClass(Scanner input);
 	public void setWordMean(Scanner input);
+
+	public String getWordPronunce();
 	
 }
